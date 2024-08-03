@@ -6,6 +6,7 @@ import { Container } from '@mui/material';
 import FileUploadComponent from "./Components/Shared/file_upload";
 import { AppProvider } from "./Context/AppContext";
 import Speech2Speech from "./Components/Intro/Speech2Speech";
+import Voice2Voice from "./Components/Intro/Voice2Voice";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
             <Route path="/uploadFiles" element={<FileUploadComponent />} />
             <Route path="/asr" element={<ASR />} />
             <Route path="/text2text" element={<Speech2Speech />} />
+            <Route path="/text2speech" element={<Voice2Voice />} />
           </Routes>
         </Container>
       </Router>

@@ -53,6 +53,7 @@ const RenderASR = () => {
     }, [])
 
     useEffect(() => {
+        setIsPlaying(false);
         // Initialize WaveSurfer
         if (TeluguAudio && TeluguAudio[selectedAudioIndex]) {
             if (wavesurferRef.current) {

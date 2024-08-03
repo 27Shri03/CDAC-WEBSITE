@@ -28,8 +28,8 @@ const Home = () => {
                     </Button>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                    <Button fullWidth color='secondary' variant="contained" onClick={() => navigate('/voice2voice')} sx={{ m: 1 }}>
-                        Voice to Voice
+                    <Button fullWidth color='secondary' variant="contained" onClick={() => navigate('/text2speech')} sx={{ m: 1 }}>
+                        Text to Speech
                     </Button>
                 </Grid>
             </Grid>
