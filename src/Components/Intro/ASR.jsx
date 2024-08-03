@@ -3,6 +3,7 @@ import { Box, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../Context/AppContext';
 import RenderASR from '../Services/RenderASR';
+import "../Styles/home.css";
 
 
 export default function ASR() {
@@ -22,13 +23,14 @@ export default function ASR() {
     return (
         <Box sx={{ height: '100vh', p: 3, textAlign: 'center' }}>
             <Box sx={{ textAlign: 'center' }}>
-                <Typography variant="h3" gutterBottom>ASR</Typography>
-                <Typography variant="body1" paragraph sx={{ maxWidth: 600, mx: 'auto', mb: 4 }}>
-                    Automatic Speech Recognition (ASR) technology converts spoken language into written text.
-                    Our advanced ASR system utilizes deep learning algorithms to accurately transcribe audio
-                    in real-time, supporting multiple languages and accents.
+                <Typography variant="h3" className="custom-title">ASR (Automatic Speech Recognition)
                 </Typography>
-                <Button variant="contained" onClick={handleTryNow}>Try Now!</Button>
+                <Typography marginBottom={3} variant="body1" paragraph className='custom-description'>
+                    Automatic Speech Recognition (ASR) technology converts spoken language into written text.  This process is the first step in Speech-to-Speech translation, which begins with converting the spoken words in the source language Telugu into text through speech recognition system.
+                    This involves identifying and transcribing the spoken words in Telugu accurately.
+
+                </Typography>
+                <Button variant="contained" onClick={handleTryNow}>GET STARTED</Button>
             </Box>
             {
                 showASR && (

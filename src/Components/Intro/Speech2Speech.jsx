@@ -3,6 +3,7 @@ import { Box, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../Context/AppContext';
 import RenderS2S from '../Services/RenderS2S';
+import "../Styles/home.css";
 
 
 export default function Speech2Speech() {
@@ -22,11 +23,12 @@ export default function Speech2Speech() {
     return (
         <Box sx={{ height: '100vh', p: 3, textAlign: 'center' }}>
             <Box sx={{ textAlign: 'center' }}>
-                <Typography variant="h3" gutterBottom>Text to Text Translation</Typography>
-                <Typography variant="body1" paragraph sx={{ maxWidth: 600, mx: 'auto', mb: 4 }}>
-                    Text-to-Text (T2T) refers to a type of natural language processing (NLP) technology where input text is transformed into a different text output. Applications include machine translation, text summarization, paraphrasing, and sentiment analysis. T2T systems leverage advanced algorithms and neural networks to understand, interpret, and generate human-like text, enhancing communication and information accessibility.
+                <Typography variant="h3" className='custom-title'>Text-to-Text Machine Translation
                 </Typography>
-                <Button variant="contained" onClick={handleTryNow}>Try Now!</Button>
+                <Typography marginBottom={3} variant="body1" paragraph className='custom-description'>
+                    Text-to-Text (T2T) refers to a type of natural language processing (NLP) technology where input text is transformed into a different text output. Applications include machine translation, text summarization, paraphrasing, and sentiment analysis. Text-to-Text translation in this system employs machine translation techniques to convert the text from the source language Telugu to the target language English.
+                </Typography>
+                <Button variant="contained" onClick={handleTryNow}>Get Started</Button>
             </Box>
             {
                 showASR && (

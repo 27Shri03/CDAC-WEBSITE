@@ -3,6 +3,7 @@ import { Box, Typography, Button } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../Context/AppContext';
 import RenderV2V from '../Services/RenderV2V';
+import "../Styles/home.css";
 
 export default function Voice2Voice() {
     const { EnglishAudio, EnglishText } = useAppContext();
@@ -21,11 +22,12 @@ export default function Voice2Voice() {
     return (
         <Box sx={{ height: '100vh', p: 3, textAlign: 'center' }}>
             <Box sx={{ textAlign: 'center' }}>
-                <Typography variant="h3" gutterBottom>Text to Speech</Typography>
-                <Typography variant="body1" paragraph sx={{ maxWidth: 600, mx: 'auto', mb: 4 }}>
-                    Text-to-speech (TTS) technology converts written text into spoken words. It uses natural language processing and voice synthesis to produce lifelike speech. TTS is widely used in applications like virtual assistants, accessibility tools for the visually impaired, and language learning, enhancing user interaction and accessibility.
+                <Typography variant="h3" className='custom-title'>Text-to-Speech Synthesis
                 </Typography>
-                <Button variant="contained" onClick={handleTryNow}>Try Now!</Button>
+                <Typography marginBottom={3} variant="body1" paragraph className='custom-description'>
+                    Finally the System deploys text-to-speech technology to generate spoken words in the target language English from the input of English text.Text-to-Speech Synthesis(TTS) technology converts written text into spoken words. It uses voice synthesis to produce artificial speech. TTS is widely used in applications like virtual assistants which are accessibility tools for the visually impaired, language learning, enhancing user interaction and accessibility.
+                </Typography>
+                <Button variant="contained" onClick={handleTryNow}>GET STARTED</Button>
             </Box>
             {
                 showASR && (

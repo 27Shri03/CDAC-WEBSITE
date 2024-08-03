@@ -12,8 +12,8 @@ const Navbar = () => {
     const navItems = [
         { text: 'HOME', path: '/' },
         { text: 'ASR', path: '/asr' },
-        { text: 'Text to Text', path: '/text2text' },
-        { text: 'Text to Speech', path: '/text2speech' },
+        { text: 'Text-to-text', path: '/text2text' },
+        { text: 'Text-to-speech', path: '/text2speech' },
         { text: 'Upload Files', path: '/uploadFiles' },
     ];
 
