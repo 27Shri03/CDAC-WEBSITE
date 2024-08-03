@@ -9,13 +9,13 @@ const Home = () => {
 
     return (
         <Box sx={{ textAlign: 'center', mt: 4 }}>
-            <Typography variant="h2" className="custom-title">
+            <p variant="h2" className="custom-title">
                 A Model for Developing Telugu to English Speech-to-Speech Translation System in Indic Languages
-            </Typography>
-            <Typography variant="body1" paragraph className='custom-description'>
-            Our System demonstrates Speech Translation Pipeline as a web application for translating audios from one language to another language by cascading three modules. The system combines highly accurate speech to text (ASR) for Telugu language, robust machine translation (MT) system for translated text into English, text to speech (TTS) module to render translated synthesized audio on the translated text similar to the original audio.Our intuitive system design makes it easy to breakdown language barriers and communicate effectively across the globe. 
+            </p>
+            <p className='custom-description'>
+                Our System demonstrates Speech Translation Pipeline as a web application for translating audios from one language to another language by cascading three modules. The system combines highly accurate speech to text (ASR) for Telugu language, robust machine translation (MT) system for translated text into English, text to speech (TTS) module to render translated synthesized audio on the translated text similar to the original audio.Our intuitive system design makes it easy to breakdown language barriers and communicate effectively across the globe.
 
-            </Typography>
+            </p>
             <Grid container spacing={2} justifyContent="center" marginTop={2}>
                 <Grid item xs={12} sm={6} md={4}>
                     <Button fullWidth color='success' variant="contained" onClick={() => navigate('/asr')} sx={{ m: 1 }}>

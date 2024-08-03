@@ -22,11 +22,11 @@ export default function Voice2Voice() {
     return (
         <Box sx={{ height: '100vh', p: 3, textAlign: 'center' }}>
             <Box sx={{ textAlign: 'center' }}>
-                <Typography variant="h3" className='custom-title'>Text-to-Speech Synthesis
-                </Typography>
-                <Typography marginBottom={3} variant="body1" paragraph className='custom-description'>
-                    Finally the System deploys text-to-speech technology to generate spoken words in the target language English from the input of English text.Text-to-Speech Synthesis(TTS) technology converts written text into spoken words. It uses voice synthesis to produce artificial speech. TTS is widely used in applications like virtual assistants which are accessibility tools for the visually impaired, language learning, enhancing user interaction and accessibility.
-                </Typography>
+                <p className='custom-title'>Text-to-Speech Synthesis
+                </p>
+                <p style={{ marginBottom: '15px' }} className='custom-description'>
+                    Finally the System deploys text-to-speech technology to generate spoken words in the target language English from the input of English text.Text-to-Speech Synthesis(TTS) technology converts written text into spoken words. It uses voice synthesis to produce artificial speech. TTS is widely used in applications like virtual assistants which are accessibility tools for the visually impaired, language learning, enhancing user interaction and accessibility.
+                </p>
                 <Button variant="contained" onClick={handleTryNow}>GET STARTED</Button>
             </Box>
             {

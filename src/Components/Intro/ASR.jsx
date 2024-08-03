@@ -23,13 +23,13 @@ export default function ASR() {
     return (
         <Box sx={{ height: '100vh', p: 3, textAlign: 'center' }}>
             <Box sx={{ textAlign: 'center' }}>
-                <Typography variant="h3" className="custom-title">ASR (Automatic Speech Recognition)
-                </Typography>
-                <Typography marginBottom={3} variant="body1" paragraph className='custom-description'>
+                <p className="custom-title">ASR (Automatic Speech Recognition)
+                </p>
+                <p style={{marginBottom : '15px'}} className='custom-description'>
                     Automatic Speech Recognition (ASR) technology converts spoken language into written text.  This process is the first step in Speech-to-Speech translation, which begins with converting the spoken words in the source language Telugu into text through speech recognition system.
                     This involves identifying and transcribing the spoken words in Telugu accurately.
 
-                </Typography>
+                </p>
                 <Button variant="contained" onClick={handleTryNow}>GET STARTED</Button>
             </Box>
             {
