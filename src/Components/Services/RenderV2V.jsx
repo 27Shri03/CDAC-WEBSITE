@@ -35,7 +35,7 @@ const WaveformContainer = styled(Box)({
 const RenderV2V = () => {
     const { EnglishAudio, EnglishText } = useAppContext();
     const [selectedAudioIndex, setSelectedAudioIndex] = useState(0);
-    const [transcription, setTranscription] = useState('');
+    const [transcription, setTranscription] = useState([]);
     const [isPlaying, setIsPlaying] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState('English');
     const [hidden, setHidden] = useState(true);
@@ -43,7 +43,7 @@ const RenderV2V = () => {
     const wavesurferRef = useRef(null);
 
     useEffect(() => {
-        processTextFiles(EnglishText)
+        processTextFiles(EnglishText[0])
             .then(result => {
                 console.log(result);
                 setTranscription(result);
@@ -156,9 +156,9 @@ const RenderV2V = () => {
                                 },
                             }}
                         >
-                            {EnglishText.map((audio, index) => (
+                            {transcription.map((audio, index) => (
                                 <MenuItem key={index} value={index} onClick={() => handleAudioChange(index)}>
-                                    {audio.name}
+                                    {index}.txt
                                 </MenuItem>
                             ))}
                         </StyledSelect>

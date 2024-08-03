@@ -41,8 +41,8 @@ export default function RenderS2S() {
     const [sourceLanguage, setSourceLanguage] = useState('Telugu');
     const [targetLanguage, setTargetLanguage] = useState('English');
     const [selectedAudioIndex, setSelectedAudioIndex] = useState(0);
-    const [sourceTranscription, setSourceTranscription] = useState('');
-    const [targetTranscription, setTargetTranscription] = useState('');
+    const [sourceTranscription, setSourceTranscription] = useState([]);
+    const [targetTranscription, setTargetTranscription] = useState([]);
     const [hidden, setHidden] = useState(true);
 
     function handleSwitch() {
@@ -56,7 +56,7 @@ export default function RenderS2S() {
     }, [selectedAudioIndex])
 
     useEffect(() => {
-        processTextFiles(TeluguText)
+        processTextFiles(TeluguText[0])
             .then(result => {
                 console.log(result);
                 setSourceTranscription(result);
@@ -64,7 +64,7 @@ export default function RenderS2S() {
             .catch(error => {
                 console.error('Error processing text files:', error);
             });
-        processTextFiles(EnglishText)
+        processTextFiles(EnglishText[0])
             .then(result => {
                 console.log(result);
                 setTargetTranscription(result);
@@ -109,9 +109,9 @@ export default function RenderS2S() {
                         MenuProps={MenuProps}
 
                     >
-                        {(sourceLanguage === 'Telugu' ? TeluguText : EnglishText).map((audio, index) => (
+                        {sourceTranscription.map((audio, index) => (
                             <MenuItem key={index} value={index} onClick={() => handleAudioChange(index)}>
-                                {audio.name}
+                                {index}.txt
                             </MenuItem>
                         ))}
                     </StyledSelect>

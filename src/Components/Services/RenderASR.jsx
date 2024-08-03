@@ -42,7 +42,7 @@ const RenderASR = () => {
     const wavesurferRef = useRef(null);
 
     useEffect(() => {
-        processTextFiles(TeluguText)
+        processTextFiles(TeluguText[0])
             .then(result => {
                 console.log(result);
                 setTranscription(result);
@@ -103,14 +103,17 @@ const RenderASR = () => {
     };
 
     const handleDownload = () => {
-        if (TeluguText && TeluguText[selectedAudioIndex]) {
-            const url = URL.createObjectURL(TeluguText[selectedAudioIndex]);
+        if (transcription && transcription[selectedAudioIndex]) {
+            const text = transcription[selectedAudioIndex];
+            const blob = new Blob([text], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = TeluguText[selectedAudioIndex].name;
+            a.download = `transcription_${selectedAudioIndex}.txt`;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);
+            URL.revokeObjectURL(url);
         }
     };
 
