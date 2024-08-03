@@ -163,7 +163,18 @@ const RenderASR = () => {
                     </FormControl>
                 </Box>
             </Box>
+            <WaveformContainer style={{ marginTop: '60px' }} ref={waveformRef} />
 
+            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '50px' }}>
+                <ActionButton variant="contained" color="primary" onClick={togglePlayPause}>
+                    {isPlaying ? 'Pause' : 'Play'}
+                </ActionButton>
+                <Box>
+                    <ActionButton variant="contained" color="primary" onClick={handleDownload}>
+                        Download
+                    </ActionButton>
+                </Box>
+            </Box>
             <Paper
                 elevation={3}
                 sx={{
@@ -194,18 +205,7 @@ const RenderASR = () => {
                 </Typography>
             </Paper>
 
-            <WaveformContainer style={{ marginTop: '60px' }} ref={waveformRef} />
 
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '50px' }}>
-                <ActionButton variant="contained" color="primary" onClick={togglePlayPause}>
-                    {isPlaying ? 'Pause' : 'Play'}
-                </ActionButton>
-                <Box>
-                    <ActionButton variant="contained" color="primary" onClick={handleDownload}>
-                        Download
-                    </ActionButton>
-                </Box>
-            </Box>
         </Box>
     );
 };

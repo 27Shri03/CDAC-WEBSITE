@@ -81,6 +81,7 @@ const FileUploadComponent = () => {
                     padding: '10px',
                     backgroundColor: '#f5f5f5'
                 }}
+                hidden={!files}
             >
                 {renderFileList(files)}
             </Paper>

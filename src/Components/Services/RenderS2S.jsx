@@ -5,6 +5,12 @@ import { useAppContext } from '../../Context/AppContext';
 import { styled } from '@mui/system';
 import processTextFiles from '../../../Utils/processTextFiles';
 
+const ActionButton = styled(Button)({
+    borderRadius: '20px',
+    padding: '5px 15px',
+    marginLeft: '10px',
+});
+
 const StyledSelect = styled(Select)(({ theme }) => ({
     backgroundColor: 'white',
     borderRadius: '20px',
@@ -37,12 +43,17 @@ export default function RenderS2S() {
     const [selectedAudioIndex, setSelectedAudioIndex] = useState(0);
     const [sourceTranscription, setSourceTranscription] = useState('');
     const [targetTranscription, setTargetTranscription] = useState('');
+    const [hidden, setHidden] = useState(true);
 
     function handleSwitch() {
         const temp = sourceTranscription;
         setSourceTranscription(targetTranscription);
         setTargetTranscription(temp);
     }
+
+    useEffect(() => {
+        setHidden(true);
+    }, [selectedAudioIndex])
 
     useEffect(() => {
         processTextFiles(TeluguText)
@@ -66,8 +77,8 @@ export default function RenderS2S() {
     const handleSwapLanguages = () => {
         setSourceLanguage(prevSource => prevSource === 'Telugu' ? 'English' : 'Telugu');
         setTargetLanguage(prevTarget => prevTarget === 'Telugu' ? 'English' : 'Telugu');
-        setSelectedAudioIndex(0);
         handleSwitch();
+        setHidden(true);
     };
 
     const handleAudioChange = (index) => {
@@ -75,7 +86,7 @@ export default function RenderS2S() {
     };
 
     return (
-        <Box sx={{ width: '100%', maxWidth: 800, mx: 'auto', p: 3, borderRadius: '15px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)', background: 'linear-gradient(145deg, #f6f7f9, #ffffff)', border: '1px solid #e0e0e0', marginTop: '50px' }}>
+        <Box sx={{ width: '100%', maxWidth: 800, mx: 'auto', p: 3, borderRadius: '15px', boxShadow: '0 4px 20px rgba(0,0,0,0.1)', background: 'linear-gradient(145deg, #f6f7f9, #ffffff)', border: '1px solid #e0e0e0', marginTop: '30px' }}>
             <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
                 <Box>
                     <Typography variant="h6" sx={{ mb: 2 }}>Source Language</Typography>
@@ -109,17 +120,22 @@ export default function RenderS2S() {
 
             <Box sx={{ display: 'flex', justifyContent: 'space-between', mb: 4 }}>
                 <Box sx={{ width: '48%' }}>
-                    <Typography variant="h6" sx={{ mb: 2 }}>Source Transcription</Typography>
+                    <Typography variant="h6" sx={{ mb: 2 }}>Source Text</Typography>
                     <Paper elevation={3} sx={{ p: 2, height: 200, overflowY: 'auto' }}>
                         <Typography>{sourceTranscription[selectedAudioIndex]}</Typography>
                     </Paper>
                 </Box>
                 <Box sx={{ width: '48%' }}>
-                    <Typography variant="h6" sx={{ mb: 2 }}>Target Transcription</Typography>
+                    <Typography variant="h6" sx={{ mb: 2 }}>Target Text</Typography>
                     <Paper elevation={3} sx={{ p: 2, height: 200, overflowY: 'auto' }}>
-                        <Typography>{targetTranscription[selectedAudioIndex]}</Typography>
+                        <Typography hidden={hidden}>{targetTranscription[selectedAudioIndex]}</Typography>
                     </Paper>
                 </Box>
+            </Box>
+            <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '50px' }}>
+                <ActionButton variant="contained" color="primary" onClick={() => setHidden(false)}>
+                    Translate
+                </ActionButton>
             </Box>
         </Box>
     );

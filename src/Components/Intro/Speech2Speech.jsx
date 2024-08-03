@@ -22,7 +22,7 @@ export default function Speech2Speech() {
     return (
         <Box sx={{ height: '100vh', p: 3, textAlign: 'center' }}>
             <Box sx={{ textAlign: 'center' }}>
-                <Typography variant="h3" gutterBottom>Text to Text</Typography>
+                <Typography variant="h3" gutterBottom>Text to Text Translation</Typography>
                 <Typography variant="body1" paragraph sx={{ maxWidth: 600, mx: 'auto', mb: 4 }}>
                     Text-to-Text (T2T) refers to a type of natural language processing (NLP) technology where input text is transformed into a different text output. Applications include machine translation, text summarization, paraphrasing, and sentiment analysis. T2T systems leverage advanced algorithms and neural networks to understand, interpret, and generate human-like text, enhancing communication and information accessibility.
                 </Typography>

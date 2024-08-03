@@ -38,6 +38,7 @@ const RenderV2V = () => {
     const [transcription, setTranscription] = useState('');
     const [isPlaying, setIsPlaying] = useState(false);
     const [selectedLanguage, setSelectedLanguage] = useState('English');
+    const [hidden, setHidden] = useState(true);
     const waveformRef = useRef(null);
     const wavesurferRef = useRef(null);
 
@@ -55,6 +56,7 @@ const RenderV2V = () => {
     useEffect(() => {
         // Initialize WaveSurfer
         setIsPlaying(false);
+        setHidden(true);
         if (EnglishAudio && EnglishAudio[selectedAudioIndex]) {
             if (wavesurferRef.current) {
                 wavesurferRef.current.destroy();
@@ -194,16 +196,19 @@ const RenderV2V = () => {
                 </Typography>
             </Paper>
 
-            <WaveformContainer style={{ marginTop: '60px' }} ref={waveformRef} />
+            <WaveformContainer hidden={hidden} style={{ marginTop: '60px' }} ref={waveformRef} />
 
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '50px' }}>
-                <ActionButton variant="contained" color="primary" onClick={togglePlayPause}>
+            <Box sx={{ display: 'flex', justifyContent: hidden ? 'center' : 'space-between', alignItems: 'center', marginTop: '50px' }}>
+                {!hidden && <ActionButton variant="contained" color="primary" onClick={togglePlayPause}>
                     {isPlaying ? 'Pause' : 'Play'}
+                </ActionButton>}
+                <ActionButton variant="contained" color="primary" onClick={() => setHidden(false)}>
+                    Synthesise Speech
                 </ActionButton>
                 <Box>
-                    <ActionButton variant="contained" color="primary" onClick={handleDownload}>
+                    {!hidden && <ActionButton variant="contained" color="primary" onClick={handleDownload}>
                         Download
-                    </ActionButton>
+                    </ActionButton>}
                 </Box>
             </Box>
         </Box>
