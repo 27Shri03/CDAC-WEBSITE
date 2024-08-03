@@ -3,6 +3,7 @@ import { Box, FormControl, Select, MenuItem, Typography, Button, Paper } from '@
 import { styled } from '@mui/system';
 import WaveSurfer from 'wavesurfer.js';
 import { useAppContext } from '../../Context/AppContext';
+import processTextFiles from '../../../Utils/processTextFiles';
 
 const StyledSelect = styled(Select)(({ theme }) => ({
     backgroundColor: 'white',
@@ -41,19 +42,17 @@ const RenderASR = () => {
     const wavesurferRef = useRef(null);
 
     useEffect(() => {
-        console.log("telugu");
-        console.log(TeluguAudio);
-        const textFile = TeluguText[0];
-        const reader = new FileReader();
-        reader.onload = (event) => {
-            const text = event.target.result;
-            const lines = text.split('\n').filter(line => line.trim() !== '');
-            setTranscription(lines);
-        };
-        reader.onerror = (error) => {
-            console.error('Error reading text file:', error);
-        };
-        reader.readAsText(textFile);
+        processTextFiles(TeluguText)
+            .then(result => {
+                console.log(result);
+                setTranscription(result);
+            })
+            .catch(error => {
+                console.error('Error processing text files:', error);
+            });
+    }, [])
+
+    useEffect(() => {
         // Initialize WaveSurfer
         if (TeluguAudio && TeluguAudio[selectedAudioIndex]) {
             if (wavesurferRef.current) {
@@ -89,7 +88,7 @@ const RenderASR = () => {
                 }
             };
         }
-    }, [selectedAudioIndex, TeluguAudio, TeluguText]);
+    }, [selectedAudioIndex, TeluguAudio]);
 
     const handleAudioChange = (index) => {
         setSelectedAudioIndex(index);
@@ -103,11 +102,11 @@ const RenderASR = () => {
     };
 
     const handleDownload = () => {
-        if (TeluguAudio && TeluguAudio[selectedAudioIndex]) {
-            const url = URL.createObjectURL(TeluguAudio[selectedAudioIndex]);
+        if (TeluguText && TeluguText[selectedAudioIndex]) {
+            const url = URL.createObjectURL(TeluguText[selectedAudioIndex]);
             const a = document.createElement('a');
             a.href = url;
-            a.download = TeluguAudio[selectedAudioIndex].name;
+            a.download = TeluguText[selectedAudioIndex].name;
             document.body.appendChild(a);
             a.click();
             document.body.removeChild(a);

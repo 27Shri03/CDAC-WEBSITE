@@ -1,17 +1,16 @@
 import React, { useState } from 'react';
 import { Box, Typography, Button } from '@mui/material';
-import '../Shared/dragDrop.css';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from '../../Context/AppContext';
 import RenderS2S from '../Services/RenderS2S';
 
 
 export default function Speech2Speech() {
-    const { TeluguAudio, TeluguText, EnglishText, EnglishAudio } = useAppContext();
+    const { TeluguText, EnglishText } = useAppContext();
     const [showASR, setShowASR] = useState(false);
     const navigate = useNavigate();
     const handleTryNow = () => {
-        if (TeluguAudio && TeluguText && EnglishAudio && EnglishText) {
+        if (TeluguText && EnglishText) {
             setShowASR(true);
         }
         else {
